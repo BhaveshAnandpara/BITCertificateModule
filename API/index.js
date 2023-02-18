@@ -20,7 +20,15 @@ async function main() {
     await mongoose.connect(process.env.MONGO_URL).then(() => console.log("DB COnnection Succesful"));
 }
 
+
+const authRoute = require("./Routes/auth")
+
+
 app.use(express.json())
+
+
+app.use( '/auth' , authRoute )
+
 
 app.listen( 8001 , ()=>{
     console.log( "Backend Server is Running" );
