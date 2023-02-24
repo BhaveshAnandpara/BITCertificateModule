@@ -17,17 +17,20 @@ app.use(function (req, res, next) {
 main().catch(err => console.log(err));
 
 async function main() {
-    await mongoose.connect(process.env.MONGO_URL).then(() => console.log("DB COnnection Succesful"));
+    await mongoose.connect(process.env.MONGO_URL).then(() => {
+        console.log("DB COnnection Succesful")
+    });
 }
 
 
-const authRoute = require("./Routes/auth")
+const authRoute = require("./Routes/Student/auth")
+const adminRoute = require("./Routes/Admin/Students")
 
 
 app.use(express.json())
 
 
-app.use( '/auth' , authRoute )
+app.use('/admin', adminRoute )
 
 
 app.listen( 8001 , ()=>{
