@@ -92,4 +92,27 @@ router.post('/registerStudents', async (req, res) => {
 
 })
 
+
+// Update Student
+/**
+ *  Input --> { prn , name  , password , email , department  , academicSession }
+ *  Output --> Either Error Message or Object --> { msg  }
+ * 
+ */
+
+router.post( '/updateStudent' , async( req,res)=>{
+
+    const prn = req.body.prn
+
+        await Student.updateOne( { prn }  , { $set : req.body  } , { runValidators : true } ).then(()=>{
+            res.json( res.json("Updated Successfully") )
+        }).catch((e)=>{
+            res.json( e )
+        })
+
+
+})
+
+
+
 module.exports = router
