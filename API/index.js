@@ -24,13 +24,15 @@ async function main() {
 
 
 const authRoute = require("./Routes/Student/auth")
-const adminRoute = require("./Routes/Admin/Students")
+const adminStudnetRoute = require("./Routes/Admin/Students")
+const adminFacultyRoute = require("./Routes/Admin/Faculty")
 
 
 app.use(express.json())
 
 
-app.use('/admin', adminRoute )
+app.use('/adminStudent', adminStudnetRoute )
+app.use('/adminFaculty', adminFacultyRoute )
 
 
 app.listen( 8001 , ()=>{

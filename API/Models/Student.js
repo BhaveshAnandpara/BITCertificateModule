@@ -7,7 +7,7 @@ const StudentSchema = mongoose.Schema({
     name : {type : String , required : true },
     password : {type : String , required : true },
     email : { type : String , required : true },
-    department : { type : String , enum : config.departments , required : true},
+    department : { type : String  , enum :{ values :  config.departments , message : "Department Invalid" } , required : true},
     academicSession : {type : String , required : true },
     coursesInstances : { type : Array , required : false },
 
