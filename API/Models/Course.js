@@ -11,7 +11,7 @@ const CourseSchema = mongoose.Schema({
     assignedTo : { type : mongoose.Schema.Types.ObjectId , ref : 'Faculty' , required : true },
     academicSession : {type : String , required : true },
     department : { type : String , required : true},
-    certificateTemplate : { type : String ,  required : true},
+    certificateTemplate : { type : Buffer ,  required : true},
 
 })
 
