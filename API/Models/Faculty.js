@@ -8,6 +8,7 @@ const FacultySchema = mongoose.Schema({
     email : { type : String , required : true, unique : true },
     department : { type : String  , enum :{ values :  config.departments , message : "Department Invalid" } , required : true},
     roles : { type : String , enum :{ values :  config.roles , message : "Invalid Role" } , required : true },
+    course : { type : Array ,  required : false },
     signature : { type : Buffer ,  required : true },
 
 })

@@ -4,18 +4,19 @@ import axios from 'axios'
 const proxy = 'http://localhost:8001/'
 
 
-const POST_METHOD = (path, data) => {
+const POST_METHOD = (path, data ) => {
 
   return new Promise((resolve, reject) => {
 
     var config = {
-      method: 'get',
+      method: 'post',
       url: proxy + path,
       headers: {
         'Content-Type': 'application/json'
       },
-      data: JSON.stringify(data)
+      data: data
     };
+
 
     axios(config)
       .then(function (response) {

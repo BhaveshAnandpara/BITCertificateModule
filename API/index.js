@@ -35,6 +35,7 @@ app.use(express.json())
 app.use('/adminStudent', adminStudnetRoute )
 app.use('/adminFaculty', adminFacultyRoute )
 app.use('/hod', addCourseRoute )
+app.use('/student', authRoute )
 
 
 app.listen( 8001 , ()=>{

@@ -20,7 +20,7 @@ export default function Login() {
 
         if (!userId.includes('bitwardha.ac.in')) path = 'student/studentLogin'
 
-        POST_METHOD(path).then((result) => {
+        POST_METHOD(path , data).then((result) => {
             alert(result.msg)
         }).catch((e) => { console.log(e); })
 
