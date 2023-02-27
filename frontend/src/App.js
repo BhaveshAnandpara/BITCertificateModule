@@ -7,7 +7,6 @@ function App() {
   return (
 
 
-    <BrowserRouter>
       <Routes>
 
         //Authentication
@@ -15,7 +14,6 @@ function App() {
 
 
       </Routes>
-    </BrowserRouter>
 
   )
 }
