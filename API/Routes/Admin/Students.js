@@ -55,17 +55,18 @@ router.post('/registerStudents', async (req, res) => {
             // If Error Occured return error message
             const registerStudents = new Promise((resolve, reject) => {
 
-
                 let count = 0;
 
                 temp.forEach(async (res) => {
+
+                    res.password = CryptoJS.AES.encrypt(res.password + "", process.env.SECRET_KEY).toString()//Encryptes Password
 
                     await Student.updateOne(
                         { prn: res.prn },
                         { $set: { prn: res.prn, name: res.name, password: res.password, email: res.email, department: res.department, academicSession: res.academicSession } },
                         { upsert: true, runValidators: true })
-                        .catch((e) => { reject( {msg : e.message } ) })
-                        .then(() => { console.log( "Data Updated" ); })
+                        .catch((e) => { reject({ msg: e.message }) })
+                        .then(() => { console.log("Data Updated"); })
 
                     count++;
 
@@ -78,8 +79,8 @@ router.post('/registerStudents', async (req, res) => {
 
 
             registerStudents
-            .then((resposne) => { res.json(resposne) })
-            .catch((e) => res.json(e))
+                .then((resposne) => { res.json(resposne) })
+                .catch((e) => res.json(e))
 
 
         })
@@ -100,15 +101,15 @@ router.post('/registerStudents', async (req, res) => {
  * 
  */
 
-router.post( '/updateStudent' , async( req,res)=>{
+router.post('/updateStudent', async (req, res) => {
 
     const prn = req.body.prn
 
-        await Student.updateOne( { prn }  , { $set : req.body  } , { runValidators : true } ).then(()=>{
-            res.json( res.json("Updated Successfully") )
-        }).catch((e)=>{
-            res.json( e )
-        })
+    await Student.updateOne({ prn }, { $set: req.body }, { runValidators: true }).then(() => {
+        res.json(res.json("Updated Successfully"))
+    }).catch((e) => {
+        res.json(e)
+    })
 
 
 })

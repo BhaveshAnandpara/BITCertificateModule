@@ -22,8 +22,6 @@ async function main() {
     });
 }
 
-
-const authRoute = require("./Routes/Student/auth")
 const adminStudnetRoute = require("./Routes/Admin/Students")
 const adminFacultyRoute = require("./Routes/Admin/Faculty")
 const addCourseRoute = require("./Routes/HOD/addCourse")
@@ -35,7 +33,6 @@ app.use(express.json())
 app.use('/adminStudent', adminStudnetRoute )
 app.use('/adminFaculty', adminFacultyRoute )
 app.use('/hod', addCourseRoute )
-app.use('/student', authRoute )
 
 
 app.listen( 8001 , ()=>{
